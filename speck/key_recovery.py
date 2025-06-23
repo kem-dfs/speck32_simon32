@@ -731,9 +731,14 @@ def test(idx):
   nr = TOTAL_R
   this_logfile_fn = logfile_fn + '_proc' + str(idx) + '.txt'
   logfile = open(this_logfile_fn, 'w+')
-  from tensorflow.keras.models import model_from_json
-  from tensorflow.keras.models import load_model
-  from tensorflow.python.keras import backend as K
+  # from tensorflow.keras.models import model_from_json
+  # from tensorflow.keras.models import load_model
+  # from tensorflow.python.keras import backend as K
+
+  import keras
+  from keras.models import load_model
+  from keras import backend as K
+
   import tensorflow as tf
   config = tf.compat.v1.ConfigProto()
   config.gpu_options.allow_growth = False
