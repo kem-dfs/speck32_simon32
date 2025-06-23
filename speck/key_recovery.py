@@ -1,6 +1,9 @@
 import speck as sp
 import numpy as np
 
+from keras.models import Sequential
+from keras.layers import Dense
+
 from scipy.stats import norm
 from os import urandom
 from math import sqrt, log, log2
