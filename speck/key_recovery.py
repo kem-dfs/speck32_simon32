@@ -182,7 +182,7 @@ def gen_challenge(n, nr, diff, neutral_bits, keyschedule='real'):
   global logfile
   neutral_bits = neutral_bits
   key = gen_key(nr);
-  if (keyschedule is 'free'): key = np.frombuffer(urandom(2*nr),dtype=np.uint16);
+  if (keyschedule == 'free'): key = np.frombuffer(urandom(2*nr),dtype=np.uint16);
   #
   if (PRE_RN == 4):
     n = n >> (USE_MULTI_DIFF)
