@@ -745,13 +745,13 @@ def test(idx):
       print("Error. Aborting.", file=logfile);
       return(0);
     #load distinguishers
-    json_file = open('single_block_resnet.json','r');
-    json_model = json_file.read();
-    net8 = model_from_json(json_model);
+    # json_file = open('single_block_resnet.json','r');
+    # json_model = json_file.read();
+    net8 = load_model('converted_model.keras');
     net8.load_weights('net8_small.h5');
     m8 = np.load('data_wrong_key_8r_mean_1e6.npy');
     s8 = np.load('data_wrong_key_8r_std_1e6.npy'); s8 = 1.0/s8;
-    net7 = model_from_json(json_model);
+    net7 = load_model('converted_model.keras');
     net7.load_weights('net7_small.h5');
     if (TOTAL_R == 12 and PRE_RN == 4) or (TOTAL_R == 11):
       m7 = np.load('data_wrong_key_mean_7r.npy');
@@ -759,7 +759,7 @@ def test(idx):
     else:
       m7 = np.load('./DN16_lastmix/net7_small._DN16_mean_combine.npy');
       s7 = np.load('./DN16_lastmix/net7_small._DN16_std_combine.npy'); s7 = 1.0/s7;
-    net6 = model_from_json(json_model);
+    net6 = load_model('converted_model.keras');
     net6.load_weights('net6_small.h5');
     if (TOTAL_R == 12 and PRE_RN == 4) or (TOTAL_R == 11):
       m6 = np.load('./DN16_lastmix/net6_small._DN16_mean_combine.npy');
@@ -767,7 +767,7 @@ def test(idx):
     else:
       m6 = np.load('data_wrong_key_mean_6r.npy');
       s6 = np.load('data_wrong_key_std_6r.npy'); s6 = 1.0/s6;
-    net5 = model_from_json(json_model);
+    net5 = load_model('converted_model.keras');
     net5.load_weights('net5_small.h5');
     m5 = np.load('data_wrong_key_mean_5r.npy');
     s5 = np.load('data_wrong_key_std_5r.npy'); s5 = 1.0/s5;
