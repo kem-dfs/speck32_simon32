@@ -1,9 +1,6 @@
 import speck as sp
 import numpy as np
 
-from keras.models import Sequential
-from keras.layers import Dense
-
 from scipy.stats import norm
 from os import urandom
 from math import sqrt, log, log2
@@ -731,14 +728,9 @@ def test(idx):
   nr = TOTAL_R
   this_logfile_fn = logfile_fn + '_proc' + str(idx) + '.txt'
   logfile = open(this_logfile_fn, 'w+')
-  # from tensorflow.keras.models import model_from_json
-  # from tensorflow.keras.models import load_model
-  # from tensorflow.python.keras import backend as K
-
-  import keras
-  from keras.models import load_model
-  from keras import backend as K
-
+  from tensorflow.keras.models import model_from_json
+  from tensorflow.keras.models import load_model
+  from tensorflow.python.keras import backend as K
   import tensorflow as tf
   config = tf.compat.v1.ConfigProto()
   config.gpu_options.allow_growth = False
@@ -755,11 +747,19 @@ def test(idx):
     #load distinguishers
     # json_file = open('single_block_resnet.json','r');
     # json_model = json_file.read();
-    net8 = load_model('converted_model.keras');
+    # net8 = model_from_json(json_model);
+    # import json
+    # from keras.saving import deserialize_keras_object
+    # with open("model_v3.json", "r") as f:
+    #    mdl_cfg = json.load(f)
+    # net8 = deserialize_keras_object(mdl_cfg);
+
+    net8 = load_model("my_keras3_model_architecture_only.keras")
+
     net8.load_weights('net8_small.h5');
     m8 = np.load('data_wrong_key_8r_mean_1e6.npy');
     s8 = np.load('data_wrong_key_8r_std_1e6.npy'); s8 = 1.0/s8;
-    net7 = load_model('converted_model.keras');
+    net7 = load_model("my_keras3_model_architecture_only.keras")
     net7.load_weights('net7_small.h5');
     if (TOTAL_R == 12 and PRE_RN == 4) or (TOTAL_R == 11):
       m7 = np.load('data_wrong_key_mean_7r.npy');
@@ -767,7 +767,7 @@ def test(idx):
     else:
       m7 = np.load('./DN16_lastmix/net7_small._DN16_mean_combine.npy');
       s7 = np.load('./DN16_lastmix/net7_small._DN16_std_combine.npy'); s7 = 1.0/s7;
-    net6 = load_model('converted_model.keras');
+    net6 = load_model("my_keras3_model_architecture_only.keras")
     net6.load_weights('net6_small.h5');
     if (TOTAL_R == 12 and PRE_RN == 4) or (TOTAL_R == 11):
       m6 = np.load('./DN16_lastmix/net6_small._DN16_mean_combine.npy');
@@ -775,7 +775,7 @@ def test(idx):
     else:
       m6 = np.load('data_wrong_key_mean_6r.npy');
       s6 = np.load('data_wrong_key_std_6r.npy'); s6 = 1.0/s6;
-    net5 = load_model('converted_model.keras');
+    net5 = load_model("my_keras3_model_architecture_only.keras")
     net5.load_weights('net5_small.h5');
     m5 = np.load('data_wrong_key_mean_5r.npy');
     s5 = np.load('data_wrong_key_std_5r.npy'); s5 = 1.0/s5;
