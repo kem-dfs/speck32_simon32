@@ -43,7 +43,7 @@ DIRECT_IMPROVE = 0
 USE_MULTI_DIFF = 1
 USE_MULTI_DIFF_NB = 1
 PRE_RN = 4
-TOTAL_R = 13
+TOTAL_R = 11 #default 13
 comp = '1+{0}+{1}+1'.format(PRE_RN-1, TOTAL_R-PRE_RN-1)
 TOTAL_NB = 12
 NB_VARIFY = 8
@@ -602,7 +602,7 @@ def set_conf():
     global test_n
     global neutral_bit_sets
     global keyschedule
-    TOTAL_R = 13
+    TOTAL_R = 11 #default 13
     BI = 5
     bayesianIter1 = BI
     bayesianIter2 = BI
